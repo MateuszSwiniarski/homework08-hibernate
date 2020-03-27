@@ -3,7 +3,8 @@ package com.rodzyn.homework08hibernate.model.weather;
 import javax.persistence.*;
 
 @Entity
-public class WeaterDetails {
+@Table(name = "weather_details")
+public class WeatherDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,14 +18,14 @@ public class WeaterDetails {
     private String airPressure;
     private Integer predictability;
 
-    public WeaterDetails() {
+    public WeatherDetail() {
     }
 
-    public WeaterDetails(String title) {
+    public WeatherDetail(String title) {
         this.title = title;
     }
 
-        public WeaterDetails(String title, String cloud, String wind, String minTemp, String maxTemp, String temp, String airPressure, Integer predictability) {
+        public WeatherDetail(String title, String cloud, String wind, String minTemp, String maxTemp, String temp, String airPressure, Integer predictability) {
         this.title = title;
         this.cloud = cloud;
         this.wind = wind;

@@ -14,9 +14,9 @@ public interface NotebookRepository extends JpaRepository<Notebook, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE notebook SET " +
-            "notebook.title = :title, notebook.note = :note, notebook.update_date = :updateDate " +
-            "WHERE notebook.id = :id", nativeQuery = true)
+    @Query(value = "UPDATE notebooks SET " +
+            "notebooks.title = :title, notebooks.note = :note, notebooks.update_date = :updateDate " +
+            "WHERE notebooks.id = :id", nativeQuery = true)
     void updateNote(@Param("title") String title, @Param("note") String note,
                     @Param("updateDate") String date, @Param("id") Long id);
 

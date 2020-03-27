@@ -3,6 +3,7 @@ package com.rodzyn.homework08hibernate.model.notebook;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "notebooks")
 public class Notebook {
 
     @Id

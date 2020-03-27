@@ -1,7 +1,7 @@
 package com.rodzyn.homework08hibernate.service;
 
 import com.rodzyn.homework08hibernate.model.weather.ConsolidatedWeather;
-import com.rodzyn.homework08hibernate.model.weather.WeaterDetails;
+import com.rodzyn.homework08hibernate.model.weather.WeatherDetail;
 import com.rodzyn.homework08hibernate.model.weather.Weather;
 import com.rodzyn.homework08hibernate.repository.WeatherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class WeatherService {
     public void saveWeather(){
         ConsolidatedWeather consolidatedWeather = getWeather().getConsolidatedWeather().get(0);
 
-        WeaterDetails weaterDetails = new WeaterDetails(
+        WeatherDetail weatherDetail = new WeatherDetail(
                 getWeather().getTitle(),
                 consolidatedWeather.getWeatherStateName(),
                 consolidatedWeather.getWindDirectionCompass(),
@@ -49,7 +49,7 @@ public class WeatherService {
                 consolidatedWeather.getAirPressure().toString(),
                 consolidatedWeather.getPredictability()
         );
-        weatherRepo.save(weaterDetails);
+        weatherRepo.save(weatherDetail);
     }
 
     public WeatherService() {
