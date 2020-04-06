@@ -11,15 +11,13 @@ import java.util.Optional;
 @Service
 public class NotebookService {
 
-    private CurrentDate currentDate = new CurrentDate();
-
     private NotebookRepository noteBookRepo;
 
     @Autowired
     public NotebookService(NotebookRepository noteBookRepo) {
         this.noteBookRepo = noteBookRepo;
-        noteBookRepo.save(new Notebook("Example note", "This note is only for training", currentDate.getDate(), ""));
-        noteBookRepo.save(new Notebook("Play with note", "You can create new, or delete note", currentDate.getDate(), ""));
+        noteBookRepo.save(new Notebook("Example note", "This note is only for training"));
+        noteBookRepo.save(new Notebook("Play with note", "You can create new, or delete note"));
     }
 
     public List<Notebook> getAllNotes(){
@@ -31,7 +29,7 @@ public class NotebookService {
     }
 
     public void saveNote(Notebook notebook){
-        notebook.setCreateDate(currentDate.getDate());
+        notebook.setUpdateDate(notebook.getCreateDate());
         noteBookRepo.save(notebook);
     }
 
@@ -40,6 +38,7 @@ public class NotebookService {
     }
 
     public void updateNote(String title, String note, Long id){
-        noteBookRepo.updateNote(title, note, currentDate.getDate(), id);
+        Notebook notebook = new Notebook();
+        noteBookRepo.updateNote(title, note, notebook.getCreateDate().toString(), id);
     }
 }

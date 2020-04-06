@@ -1,6 +1,7 @@
 package com.rodzyn.homework08hibernate.model.notebook;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "notebooks")
@@ -11,17 +12,25 @@ public class Notebook {
     private Long id;
     private String title;
     private String note;
-    private String createDate;
-    private String updateDate;
+    private LocalDateTime createDate = LocalDateTime.now() ;
+    private LocalDateTime updateDate;
 
-    public Notebook(String title, String note, String createDate, String updateDate) {
+    public Notebook(String title, String note) {
         this.title = title;
         this.note = note;
-        this.createDate = createDate;
+        getCreateDate();
         this.updateDate = updateDate;
     }
 
     public Notebook() {
+    }
+
+    public LocalDateTime getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(LocalDateTime updatetime) {
+        this.updateDate = updatetime;
     }
 
     public Long getId() {
@@ -48,20 +57,12 @@ public class Notebook {
         this.note = note;
     }
 
-    public String getCreateDate() {
+    public LocalDateTime getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(String createDate) {
-        this.createDate = createDate;
-    }
-
-    public String getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(String udpateDate) {
-        this.updateDate = udpateDate;
+    public void setCreateDate(LocalDateTime localDateTime) {
+        this.createDate = localDateTime;
     }
 
     @Override
@@ -70,8 +71,7 @@ public class Notebook {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", note='" + note + '\'' +
-                ", createDate='" + createDate + '\'' +
-                ", udpateDate='" + updateDate + '\'' +
+                ", localDate='" + createDate + '\'' +
                 '}';
     }
 }
